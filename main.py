@@ -40,7 +40,9 @@ def calcularPrecio(tarifa, tiempoDeServicio):
             pago=ceil(horas_totales)*tarifa.semana
             
     else:  #Duro mas de 1 dia y menos de 7      
-          
+        #Vemos si los dias de inicio y fin fueron fin de semana
+        if():
+         
     #Assert postcondiciones
     
     
