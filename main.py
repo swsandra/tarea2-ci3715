@@ -1,3 +1,11 @@
+
+#############
+#Documento Vacio
+# Sandra Vera
+# Aurivan Castro
+# Elvin Quero
+###############
+
 from datetime import datetime, date, time
 from tarifa import tarifa
 from tiempoDeTrabajo import tiempoDeTrabajo
@@ -13,15 +21,18 @@ def calcularPrecio(tarifa, tiempoDeServicio):
     fin=tiempoDeServicio[1]
     
     #Vemos la cantidad de dias
-    dias_totales=((fin.fecha-inicio.fecha).days)-1 #Para no contar el primer y ultimo dia, porque probablemente no se cubren completos
+    dias_totales=((fin.fecha-inicio.fecha).days)-1#Para no contar el primer y ultimo dia, porque probablemente no se cubren completos
+    #print(dias_totales)
     
     #Horas del primer dia
-    horasInicio=inicio.tiempo.tm_hour+(inicio.tm_min/60) #Agrega los minutos a la hora
-    horasInicio=24-horasInicio
+    horasInicio=inicio.tiempo.hour+(inicio.tiempo.minute/60) #Agrega los minutos a la hora
+    
+    #print(str(horasInicio) + " horas inicio")
     
     #Horas del ultimo dia
-    horasFin=fin.tiempo.tm_hour+(fin.fecha.tm_min/60) #Agrega los minutos a la hora
-    horasFin=0+horasFin
+    horasFin=fin.tiempo.hour+(fin.tiempo.minute/60) #Agrega los minutos a la hora
+    
+    #print(str(horasFin) + " horas final")
     
     #date.isoweekday()
     if(dias_totales>7): #Fueron mas de 7 dias
@@ -36,8 +47,10 @@ def calcularPrecio(tarifa, tiempoDeServicio):
         dia=inicio.fecha.weekday()
         if(dia==5 or dia==6): #sabado 5, domingo 6
             pago=ceil(horas_totales)*tarifa.finDeSemana
+            return pago
         else:
             pago=ceil(horas_totales)*tarifa.semana
+<<<<<<< HEAD
             
     else:  #Duro mas de 1 dia y menos de 7      
         #Vemos si los dias de inicio y fin fueron fin de semana
@@ -56,3 +69,19 @@ def calcularPrecio(tarifa, tiempoDeServicio):
     
     
     
+=======
+            return pago
+
+    else:
+        horasInicio=24-horasInicio
+        horasFin=0+horasFin
+        horas_totales=horasFin-horasInicio
+        
+
+#tarifa = tarifa(15,20)
+#inicio = tiempoDeTrabajo(2018,5,9,2,50,53)
+#final = tiempoDeTrabajo(2018,5,9,3,50,54)
+#tiempoDeServicio = [inicio, final]
+#tiempoDeServicio[0]
+#calcularPrecio(tarifa, tiempoDeServicio)
+>>>>>>> elvin
