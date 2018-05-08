@@ -26,12 +26,12 @@ def calcularPrecio(tarifa, tiempoDeServicio):
     
     #Horas del primer dia
     horasInicio=inicio.tiempo.hour+(inicio.tiempo.minute/60) #Agrega los minutos a la hora
-    horasInicio=24-horasInicio
+    
     #print(str(horasInicio) + " horas inicio")
     
     #Horas del ultimo dia
     horasFin=fin.tiempo.hour+(fin.tiempo.minute/60) #Agrega los minutos a la hora
-    horasFin=0+horasFin
+    
     #print(str(horasFin) + " horas final")
     
     #date.isoweekday()
@@ -53,9 +53,10 @@ def calcularPrecio(tarifa, tiempoDeServicio):
             return pago
 
     else:
-        pass
-
-
+        horasInicio=24-horasInicio
+        horasFin=0+horasFin
+        horas_totales=horasFin-horasInicio
+        
 
 #tarifa = tarifa(15,20)
 #inicio = tiempoDeTrabajo(2018,5,9,2,50,53)
