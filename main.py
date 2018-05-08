@@ -47,35 +47,16 @@ def calcularPrecio(tarifa, tiempoDeServicio):
         dia=inicio.fecha.weekday()
         if(dia==5 or dia==6): #sabado 5, domingo 6
             pago=ceil(horas_totales)*tarifa.finDeSemana
-            return pago
         else:
             pago=ceil(horas_totales)*tarifa.semana
-<<<<<<< HEAD
-            
-    else:  #Duro mas de 1 dia y menos de 7      
-        #Vemos si los dias de inicio y fin fueron fin de semana
-        if():
-         
-    #Assert postcondiciones
-    
-    
-    
-    
-    
-    
-    
-    
-     
-    
-    
-    
-=======
-            return pago
+        
+        return pago
 
     else:
         horasInicio=24-horasInicio
         horasFin=0+horasFin
         horas_totales=horasFin-horasInicio
+        
         
 
 #tarifa = tarifa(15,20)
@@ -84,4 +65,4 @@ def calcularPrecio(tarifa, tiempoDeServicio):
 #tiempoDeServicio = [inicio, final]
 #tiempoDeServicio[0]
 #calcularPrecio(tarifa, tiempoDeServicio)
->>>>>>> elvin
+
