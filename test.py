@@ -99,30 +99,20 @@ class test_calcularPrecio_malicia(unittest.TestCase):
 
 
 
-def suite():
-    suite = unitest.TestSuite()
-
-    #Fronteras
-    suite.addTest(test_calcularPrecio_frontera('test_15min'))
-    suite.addTest(test_calcularPrecio_frontera('test_casi8Dias'))
-
-    #Equinas
-    suite.addTest(test_calcularPrecio_equinas('test_14min'))
-    suite.addTest(test_calcularPrecio_equinas('test_8Dias'))
-
-    #malicia
-    suite.addTest(test_calcularPrecio_malicia('test_trabajoUnaHoraFin'))
-    suite.addTest(test_calcularPrecio_malicia('test_trabajoDosHoras'))
-    suite.addTest(test_calcularPrecio_malicia('test_menosDeUnaHora'))
-    suite.addTest(test_calcularPrecio_malicia('test_mismoDia'))
-    suite.addTest(test_calcularPrecio_malicia('test_tresDias'))
-
-
-
-    return suite
-
-
-
 if __name__ == '__main__':
+
+    tests = [test_calcularPrecio_frontera, test_calcularPrecio_equinas,
+    	test_calcularPrecio_malicia]
+
+    loader = unittest.TestLoader()
+
+    suites_list = []
+    for test_class in tests:
+        suite = loader.loadTestsFromTestCase(test_class)
+        suites_list.append(suite)
+
+    gran_suite = unittest.TestSuite(suites_list)
+
     runner = unittest.TextTestRunner()
-    runner.run(suite())
+    results = runner.run(gran_suite)
+
