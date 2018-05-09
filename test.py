@@ -87,6 +87,8 @@ class test_calcularPrecio(unittest.TestCase):
 		#res = calcularPrecio(self.tarifa, tiempoDeServicio)
 		self.assertRaises(Exception, calcularPrecio, self.tarifa, tiempoDeServicio)
 
+	def test_finItermedio(self):
+
 
 
 def suite():
