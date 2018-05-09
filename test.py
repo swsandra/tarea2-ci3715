@@ -22,15 +22,13 @@ class test_calcularPrecio_frontera(unittest.TestCase):
 		self.assertEqual(res, 15, "Espera 15. Dio " + str(res) )
 
 
-
-
-	def test_casi7Dias(self):
+	def test_casi8Dias(self):
 		#COMIENZO UN LUNES, TERMINO UN SABADO A LAS 23:59 6 Dias.
 		inicio = tiempoDeTrabajo(2018,5,7,0,0,0)
-		final = tiempoDeTrabajo(2018,5,12,23,59,0)
+		final = tiempoDeTrabajo(2018,5,13,23,59,0)
 		tiempoDeServicio = [inicio, final]
 		res = calcularPrecio(self.tarifa, tiempoDeServicio)
-		self.assertEqual(res, 2256, "Espera 2256. Dio " + str(res) )
+		self.assertEqual(res, 2712, "Espera 2712. Dio " + str(res) )
 
 
 class test_calcularPrecio_equinas(unittest.TestCase):
@@ -106,7 +104,7 @@ def suite():
 
     #Fronteras
     suite.addTest(test_calcularPrecio_frontera('test_15min'))
-    suite.addTest(test_calcularPrecio_frontera('test_casi7Dias'))
+    suite.addTest(test_calcularPrecio_frontera('test_casi8Dias'))
 
     #Equinas
     suite.addTest(test_calcularPrecio_equinas('test_14min'))
