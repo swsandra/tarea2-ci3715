@@ -7,9 +7,9 @@ class tiempoDeTrabajo(object):
     
     def __init__(self,anio,mes,dia,hora,min,seg):
         assert(anio>0)
-        assert(1<=mes<12)
-        assert(1<=dia<31)
-        assert(0<=hora<23)
+        assert(1<=mes<=12)
+        assert(1<=dia<=31)
+        assert(0<=hora<=23)
         assert(0<=min<60)
         assert(0<=seg<60)
         
