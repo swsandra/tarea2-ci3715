@@ -28,12 +28,12 @@ class test_calcularPrecio(unittest.TestCase):
 		tiempoDeServicio = [inicio, final]
 		#tiempoDeServicio[0] = inicio
 		#tiempoDeServicio[1] = final
-		self.assertEqual(calcularPrecio(self.tarifa, tiempoDeServicio), 0, "test_menosDeUnaHora fallo")
+		self.assertEqual(calcularPrecio(self.tarifa, tiempoDeServicio), 15, "test_menosDeUnaHora fallo")
 
 
 	def test_trabajoDosHoras(self):
-		inicio = tiempoDeTrabajo(2018,5,9,4,50,53)
-		final  = tiempoDeTrabajo(2018,5,9,3,50,53)
+		inicio = tiempoDeTrabajo(2018,5,9,3,50,53)
+		final  = tiempoDeTrabajo(2018,5,9,5,50,53)
 		tiempoDeServicio = [inicio, final]
 		#tiempoDeServicio[0] = inicio
 		#tiempoDeServicio[1] = final
@@ -42,8 +42,8 @@ class test_calcularPrecio(unittest.TestCase):
 
 
 	def test_trabajoUnaHoraFin(self):
-		inicio = tiempoDeTrabajo(2018,5,6,4,50,53)
-		final = tiempoDeTrabajo(2018,5,6,3,50,53)
+		inicio = tiempoDeTrabajo(2018,5,6,3,50,53)
+		final = tiempoDeTrabajo(2018,5,6,4,50,53)
 		tiempoDeServicio = [inicio, final]
 		#tiempoDeServicio[0] = inicio
 		#tiempoDeServicio[1] = final
