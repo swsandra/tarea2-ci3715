@@ -38,12 +38,13 @@ def calcularPrecio(tarifa, tiempoDeServicio):
     #date.isoweekday()
     if(dias_intermedios+2>7): #Fueron mas de 7 dias
         print("Error: el servicio duro mas de 7 dias.")
-        exit()
+        raise Exception()
     elif(dias_intermedios==-1): #Fue el mismo dia, -1 por la resta
         horas_totales=horasFin-horasInicio
         if(horas_totales<0.25): #Menos de 15 minutos
             print("Error: el servicio duro menos de 15 minutos.")
-            exit()
+            #exit()
+            raise Exception()
         #Ve el dia de la semana
         dia=inicio.fecha.weekday()
         if(dia==5 or dia==6): #sabado 5, domingo 6
@@ -59,7 +60,7 @@ def calcularPrecio(tarifa, tiempoDeServicio):
         horas_totales=horasInicio+horasFin
         if(horas_totales<0.25): #Menos de 15 minutos
             print("Error: el servicio duro menos de 15 minutos.")
-            exit()
+            raise Exception()
         #Vemos si fue fin de semana
         diaInicio=inicio.fecha.weekday()
         diaFin=fin.fecha.weekday()

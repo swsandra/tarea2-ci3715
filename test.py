@@ -72,13 +72,20 @@ class test_calcularPrecio(unittest.TestCase):
 		self.assertEqual(res, 2256, "Espera 2256. Dio " + str(res) )
 
 
-	@unittest.expectedFailure
 	def test_8Dias(self):
 		inicio = tiempoDeTrabajo(2018,5,7,0,0,0)
 		final = tiempoDeTrabajo(2018,5,14,0,0,0)
 		tiempoDeServicio = [inicio, final]
-		res = calcularPrecio(self.tarifa, tiempoDeServicio)
-		self.assertEqual(res, 2712, "Espera 2712. Dio " + str(res) )
+		#res = calcularPrecio(self.tarifa, tiempoDeServicio)
+		self.assertRaises(Exception, calcularPrecio, self.tarifa, tiempoDeServicio)
+		#self.assertEqual(res, 2712, "Espera 2712. Dio " + str(res) )
+
+	def test_14min(self):
+		inicio = tiempoDeTrabajo(2018,5,7,0,0,0)
+		final = tiempoDeTrabajo(2018,5,7,0,14,0)
+		tiempoDeServicio = [inicio, final]
+		#res = calcularPrecio(self.tarifa, tiempoDeServicio)
+		self.assertRaises(Exception, calcularPrecio, self.tarifa, tiempoDeServicio)
 
 
 
@@ -87,6 +94,7 @@ def suite():
 
     #Fronteras
     suite.addTest(test_calcularPrecio('test_15min'))
+    suite.addTest(test_calcularPrecio('test_14min'))
     suite.addTest(test_calcularPrecio('test_8Dias'))
 
     suite.addTest(test_calcularPrecio('test_trabajoUnaHoraFin'))
