@@ -57,7 +57,7 @@ class test_calcularPrecio(unittest.TestCase):
 
 	def test_tresDias(self):
 		inicio = tiempoDeTrabajo(2018,5,7,3,50,53)
-		final = tiempoDeTrabajo(2018,5,10,3,50,53)
+		final = tiempoDeTrabajo(2018,5,10,3,50,52)
 		tiempoDeServicio = [inicio, final]
 		res = calcularPrecio(self.tarifa, tiempoDeServicio)
 		self.assertEqual(res, 1080, "Espera 1080. Dio " + str(res) )
