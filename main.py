@@ -43,7 +43,6 @@ def calcularPrecio(tarifa, tiempoDeServicio):
         horas_totales=horasFin-horasInicio
         if(horas_totales<0.25): #Menos de 15 minutos
             print("Error: el servicio duro menos de 15 minutos.")
-            #exit()
             raise Exception()
         #Ve el dia de la semana
         dia=inicio.fecha.weekday()
@@ -68,13 +67,14 @@ def calcularPrecio(tarifa, tiempoDeServicio):
             pago=ceil(horas_totales)*tarifa.finDeSemana
         elif(diaInicio==6): #domingo
             pago=ceil(horasInicio)*tarifa.finDeSemana
-            pago=pago+ceil(horasFin)*tarifa.semana
+            pago=pago+(ceil(horasFin)*tarifa.semana)
         elif(diaFin==5): #termina un sabado
             pago=ceil(horasInicio)*tarifa.semana
-            pago=pago+ceil(horasFin)*tarifa.finDeSemana
+            pago=pago+(ceil(horasFin)*tarifa.finDeSemana)
         else: #entre semana
             pago=ceil(horas_totales)*tarifa.semana
         return pago
+    
     else: #Mas de dos dias
         horasInicio=24-horasInicio
         horasFin=0+horasFin
@@ -83,6 +83,7 @@ def calcularPrecio(tarifa, tiempoDeServicio):
         #Si es sabado o domingo
         if (diaInicio==5):
             pago=ceil(horasInicio)*tarifa.finDeSemana
+            dias_intermedios=dias_intermedios-1 #le quita el domingo
             pago=pago+(24*tarifa.finDeSemana) #dom
             pago=pago+(dias_intermedios*(24*tarifa.semana))
             pago=pago+(ceil(horasFin)*tarifa.semana)
@@ -105,6 +106,15 @@ def calcularPrecio(tarifa, tiempoDeServicio):
                 pago=pago+(dias_intermedios*(24*tarifa.semana))
                 pago=pago+(24*tarifa.finDeSemana)
                 pago=pago+(ceil(horasFin)*tarifa.finDeSemana)
+            #si pasa del fin de semana
+            elif(diaFin<diaInicio):
+                dias_intermedios=dias_intermedios-2 #le quita el fin de sem
+                pago=pago+(2*(24*tarifa.finDeSemana))
+                pago=pago+(dias_intermedios*(24*tarifa.semana))
+                pago=pago+(ceil(horasFin)*tarifa.semana)
+            else:   #si es entre semana pero no pasa el fin de semana
+                pago=pago+(dias_intermedios*(24*tarifa.semana))
+                pago=pago+(ceil(horasFin)*tarifa.semana)
         return pago
     
     #Assert de la postcondicion (sobre pago)
