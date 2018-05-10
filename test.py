@@ -98,7 +98,7 @@ class test_calcularPrecio_malicia(unittest.TestCase):
 		self.assertEqual(res, 1080, "Espera 1080. Dio " + str(res) )
 
 
-
+#Estoy probando algo
 if __name__ == '__main__':
 
     tests = [test_calcularPrecio_frontera, test_calcularPrecio_equinas,
