@@ -48,7 +48,7 @@ def calcularPrecio(tarifaDada, tiempoDeServicio):
         #Ve el dia de la semana
         dia=inicio.fecha.weekday()
         if(dia==5 or dia==6): #sabado 5, domingo 6
-            pago=ceil(horas_totales)*tarifaDadaDada.finDeSemana
+            pago=ceil(horas_totales)*tarifaDada.finDeSemana
         else:
             pago=ceil(horas_totales)*tarifaDada.semana
         
