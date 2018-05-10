@@ -13,11 +13,10 @@ from math import ceil
 
 def calcularPrecio(tarifaDada, tiempoDeServicio):
     
-    #Assert de los tipos
-    assert isinstance(tarifaDada, tarifa)
-    assert isinstance(tiempoDeServicio, tiempoDeTrabajo)
-    
-    
+    #Assert de los tipos por medio de IF statements
+    if not isinstance(tarifaDada, tarifa): raise Exception("El objeto no es del tipo Tarifa")
+    if not (isinstance(tiempoDeServicio[0], tiempoDeTrabajo) and isinstance(tiempoDeServicio[1], tiempoDeTrabajo)):
+        raise Exception("El objeto no es del tipo tiempoDeTrabajo")
     
     inicio=tiempoDeServicio[0]
     fin=tiempoDeServicio[1]
